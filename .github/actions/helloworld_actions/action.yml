@@ -1,0 +1,29 @@
+# action.yml
+name: 'HelloWorld'
+description: 'Custom container with trufflehog scanning routine'
+inputs:
+  apikey:
+    description: api key 
+    required: true
+  base:
+    description: Start scanning from here (usually main branch).
+    required: true
+  head:
+    description: Scan commits until here (usually dev branch).
+    required: false
+outputs:
+  result: # id of output
+    description: 'Scanning result'
+  isIssue:
+    description: 'Boolean value for Jira create issue condition'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - git
+    - file://${{ inputs.path }}
+    - --since-commit
+    - ${{ inputs.base }}
+    - --branch
+    - ${{ inputs.head }}
+    - -j 
