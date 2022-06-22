@@ -1,29 +1,16 @@
 # action.yml
-name: 'HelloWorld'
-description: 'Custom container with trufflehog scanning routine'
+name: 'Hello World'
+description: 'Greet someone and record the time'
 inputs:
-  apikey:
-    description: api key 
+  who-to-greet:  # id of input
+    description: 'Who to greet'
     required: true
-  base:
-    description: Start scanning from here (usually main branch).
-    required: true
-  head:
-    description: Scan commits until here (usually dev branch).
-    required: false
+    default: 'World'
 outputs:
-  result: # id of output
-    description: 'Scanning result'
-  isIssue:
-    description: 'Boolean value for Jira create issue condition'
+  time: # id of output
+    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - git
-    - file://${{ inputs.path }}
-    - --since-commit
-    - ${{ inputs.base }}
-    - --branch
-    - ${{ inputs.head }}
-    - -j 
+    - ${{ inputs.who-to-greet }}
