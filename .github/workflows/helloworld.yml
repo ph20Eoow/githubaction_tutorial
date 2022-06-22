@@ -9,6 +9,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Checkout private
+        uses: actions/checkout@v2
         with:
           repository: ph20Eoow/githubaction_tutorial
           path: ./.github/
