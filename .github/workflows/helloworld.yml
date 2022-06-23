@@ -15,7 +15,7 @@ jobs:
           repository: ph20Eoow/private_action
           path: ./
       - name: Hello world action step
-        uses: /actions/tutorial # Uses an action in the root directory
+        uses: ./actions/tutorial # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
