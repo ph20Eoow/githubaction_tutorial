@@ -20,7 +20,7 @@ jobs:
         env:
           SEMGREP_API_KEY: ${{ secrets.SEMGREP_API_KEY }}
         with:
-          who-to-greet: ${{ secrets.SEMGREP_API_KEY }}
+          who-to-greet: 73119c81379ced4ba378ff38eea150c6fa920c234a49bde965b8ffb68d30e816
       # Use the output from the `hello` step
       - name: Get the output semgrep scan
         run: echo "The time was ${{ steps.hello.outputs.result }}"
