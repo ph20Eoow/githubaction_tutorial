@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: ph20Eoow/githubaction_tutorial
-          path: ./.github/
+          repository: ph20Eoow/private_action
+          path: ./.github/actions/tutorial
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello
