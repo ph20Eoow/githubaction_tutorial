@@ -1,8 +1,0 @@
-FROM ubuntu:20.04
-RUN apt-get update -y && apt-get install -y curl jq python3 python3-pip git
-RUN python3 -m pip install semgrep
-# Copies your code file from your action repository to the filesystem path `/` of the container
-# Copy semgrep credential to
-COPY config/settings.yml /root/.semgrep/settings.yml
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
