@@ -22,5 +22,5 @@ jobs:
         with:
           who-to-greet: ${{ secrets.SEMGREP_API_KEY }}
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Get the output semgrep scan
+        run: echo "The time was ${{ steps.hello.outputs.result }}"
