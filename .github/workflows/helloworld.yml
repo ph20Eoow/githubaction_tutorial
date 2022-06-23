@@ -9,13 +9,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Checkout private
-        uses: actions/checkout@v2
-        with:
-          repository: ph20Eoow/githubaction_tutorial
-          path: ./.github/
       - name: Hello world action step
-        uses: ./.github/actions/helloworld_actions # Uses an action in the root directory
+        uses: ./ # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
