@@ -18,9 +18,9 @@ jobs:
         uses: ./actions/tutorial # Uses an action in the root directory
         id: hello
         env:
-          SEMGREP_API_KEY: ${{ secret.SEMGREP_API_KEY }}
+          SEMGREP_API_KEY: ${{ secrets.SEMGREP_API_KEY }}
         with:
-          who-to-greet: ${{ env.SEMGREP_API_KEY }}
+          who-to-greet: ${{ secrets.SEMGREP_API_KEY }}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
