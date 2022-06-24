@@ -4,8 +4,7 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
-    env:
-      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+    
     container:
       image: returntocorp/semgrep
     steps:
@@ -14,6 +13,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: semgrep ci
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
       # - name: Checkout
       #   uses: actions/checkout@v3
       #   with:
