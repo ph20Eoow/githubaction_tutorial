@@ -4,21 +4,24 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+    container:
+      image: returntocorp/semgrep
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: ph20Eoow/private_action
-          path: ./actions/
-      - name: Hello world action step
-        uses: ./actions/actions/tutorial # Uses an action in the root directory
-        id: hello
-        with:
-          semgrep-api-key: ${{ secrets.SEMGREP_API_KEY }}
+      - run: semgrep ci
+      # - name: Checkout
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: ph20Eoow/private_action
+      #     path: ./actions/
+      # - name: Hello world action step
+      #   uses: ./actions/actions/tutorial # Uses an action in the root directory
+      #   id: hello
       # Use the output from the `hello` step
-      - name: Get the output semgrep scan
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      # - name: Get the output semgrep scan
+      #   run: echo "The time was ${{ steps.hello.outputs.time }}"
